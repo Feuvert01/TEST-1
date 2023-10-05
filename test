@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Relances</title>
+</head>
+<body>
+    <h2>📞 Relances CA</h2>
+    <p id="relance1">🕒 - 1ère Relance à faire</p>
+    <p id="relance2">🔔 - 2ème Relance à faire</p>
+    <p id="relance3">📞 - Appeler CA pour faire le point</p>
+    
+    <h2>🚚 T1</h2>
+    <p id="t1Maintient">❓ - maintient ou annule</p>
+    <p id="t1Remboursement">❓ - Renvoi ou remboursement</p>
+    <p id="t1AttenteColis">⏳ - En attente retour colis</p>
+    <p id="t1AttenteAppros">⏳ - En attente retour appros</p>
+    <p id="t1AttenteTraitement">⏳ - En attente traitement retour</p>
+    <p id="t1AttenteAvis">⏳ - En attente retour client avis de souff</p>
+
+    <script>
+        // Obtenir la date actuelle
+        var dateActuelle = new Date();
+
+        // Fonction pour calculer la date à J+5
+        function calculerDateJPlus5(date) {
+            var nouvelleDate = new Date(date);
+            nouvelleDate.setDate(nouvelleDate.getDate() + 5);
+            return nouvelleDate;
+        }
+
+        // Fonction pour formater la date au format JJ/MM
+        function formaterDate(date) {
+            var jour = date.getDate();
+            var mois = date.getMonth() + 1;
+            return (jour < 10 ? '0' : '') + jour + "/" + (mois < 10 ? '0' : '') + mois;
+        }
+
+        // Afficher les dates calculées dans les éléments correspondants
+        document.getElementById("relance1").textContent += " " + formaterDate(calculerDateJPlus5(dateActuelle));
+        document.getElementById("relance2").textContent += " " + formaterDate(new Date(dateActuelle.getTime() + 1 * 24 * 60 * 60 * 1000)); // J+1
+        document.getElementById("relance3").textContent += " " + formaterDate(new Date(dateActuelle.getTime() + 1 * 24 * 60 * 60 * 1000)); // J+1
+        document.getElementById("t1Maintient").textContent += " " + formaterDate(dateActuelle);
+        document.getElementById("t1Remboursement").textContent += " " + formaterDate(dateActuelle);
+        document.getElementById("t1AttenteColis").textContent += " " + formaterDate(dateActuelle);
+        document.getElementById("t1AttenteAppros").textContent += " " + formaterDate(dateActuelle);
+        document.getElementById("t1AttenteTraitement").textContent += " " + formaterDate(dateActuelle);
+        document.getElementById("t1AttenteAvis").textContent += " " + formaterDate(dateActuelle);
+    </script>
+</body>
+</html>
